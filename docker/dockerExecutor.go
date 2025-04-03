@@ -116,7 +116,7 @@ func (e *Executor) deleteContainer(info nlp.ContainerInfo) Result {
 
 	// First stop it if it's running
 	stopCmd := exec.Command("docker", "stop", info.ContainerName)
-	stopCmd.Run() // Ignore errors, as it might already be stopped
+	stopCmd.Run()
 
 	// Then remove it
 	cmd := exec.Command("docker", "rm", info.ContainerName)

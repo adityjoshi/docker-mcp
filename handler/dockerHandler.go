@@ -43,13 +43,11 @@ func (h *DockerHandler) ProcessCommand(c *gin.Context) {
 		return
 	}
 
-	// Execute the corresponding Docker command
 	result := h.dockerExecutor.ExecuteCommand(intent, containerInfo)
 
 	c.JSON(http.StatusOK, result)
 }
 
-// HealthCheck returns the server health status
 func HealthCheck(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"status":  "healthy",
