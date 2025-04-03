@@ -7,13 +7,14 @@ import (
 	"docker-nlp/nlp"
 	"log"
 
+	"github.com/adityjoshi/docker-mcp/config"
 	"github.com/gin-gonic/gin"
 	"honnef.co/go/tools/config"
 )
 
 func main() {
 
-	config := config.Load()
+	config := config.LoadConfig()
 	nlpProcessor := nlp.NewProcessor()
 	dockerExecutor := docker.NewExecutor()
 
