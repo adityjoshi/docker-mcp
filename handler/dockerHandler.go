@@ -3,6 +3,7 @@ package handler
 import (
 	"net/http"
 
+	"github.com/adityjoshi/docker-mcp/docker"
 	"github.com/adityjoshi/docker-mcp/nlp"
 	"github.com/gin-gonic/gin"
 )
