@@ -1,7 +1,6 @@
 package main
 
 import (
-	"docker-nlp/config"
 	"docker-nlp/docker"
 	"docker-nlp/handlers"
 	"docker-nlp/middleware"
@@ -9,6 +8,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"honnef.co/go/tools/config"
 )
 
 func main() {
