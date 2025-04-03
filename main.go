@@ -9,7 +9,6 @@ import (
 
 	"github.com/adityjoshi/docker-mcp/config"
 	"github.com/gin-gonic/gin"
-	"honnef.co/go/tools/config"
 )
 
 func main() {
