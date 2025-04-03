@@ -1,11 +1,11 @@
 package main
 
 import (
-	"docker-nlp/docker"
-	"docker-nlp/handlers"
-	"docker-nlp/middleware"
-	"docker-nlp/nlp"
 	"log"
+
+	"github.com/adityjoshi/docker-mcp/handler"
+	"github.com/adityjoshi/docker-mcp/middleware"
+	"github.com/adityjoshi/docker-mcp/nlp"
 
 	"github.com/adityjoshi/docker-mcp/config"
 	"github.com/gin-gonic/gin"
@@ -17,18 +17,17 @@ func main() {
 	nlpProcessor := nlp.NewProcessor()
 	dockerExecutor := docker.NewExecutor()
 
-	dockerHandler := handlers.NewDockerHandler(nlpProcessor, dockerExecutor)
+	dockerHandler := handler.NewDockerHandler(nlpProcessor, dockerExecutor)
 	router := gin.Default()
 
-	// Apply API key middleware to protected routes
 	authorized := router.Group("/")
-	authorized.Use(middleware.APIKeyAuth(config.APIKey))
+	authorized.Use(middleware.APIKEYAuth(config.APIKey))
 	{
 		authorized.POST("/docker", dockerHandler.ProcessCommand)
 	}
 
 	// Public routes
-	router.GET("/health", handlers.HealthCheck)
+	router.GET("/health", handler.HealthCheck)
 
 	// Start the server
 	log.Printf("Starting MCP Docker Natural Language Server on :%s...", &config.Port)
