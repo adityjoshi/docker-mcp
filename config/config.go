@@ -18,7 +18,7 @@ func LoadConfig() *Config {
 	apiKey := os.Getenv("API_KEY")
 	if apiKey == "" {
 		log.Println("Warning: API_KEY not set. Using default value for development.")
-		apiKey = "AIzaSyCZCRGPPeUlacQ2bMap9EsffHrofCuyrko"
+		apiKey = ""
 	}
 
 	return &Config{
